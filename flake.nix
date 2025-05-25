@@ -12,7 +12,7 @@
       nixpkgs,
     }@inputs:
     # Don't forget to put the package name instead of `throw':
-    let packages = "melange-for-react-devs";
+    let package = "melange-for-react-devs";
     in
     flake-utils.lib.eachDefaultSystem (
       system:
