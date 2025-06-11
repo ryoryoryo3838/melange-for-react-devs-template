@@ -24,6 +24,7 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y opam
+          opam init
 
       - name: Install Node.js
         uses: actions/setup-node@v4
