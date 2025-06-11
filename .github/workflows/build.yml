@@ -32,10 +32,7 @@ jobs:
 
       - name: Install npm + opam dependencies
         run: |
-          opam switch create . 5.1.1 -y --deps-only
-          eval $(opam env)
-          npm install
-          npm run install:opam
+          npm run init
           npm run check-npm-deps
 
       - name: Build project
