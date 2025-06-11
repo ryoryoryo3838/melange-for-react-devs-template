@@ -42,14 +42,3 @@ jobs:
         run: |
           eval $(opam env)
           npm run build
-
-      - name: Bundle JS with Vite
-        run: |
-          eval $(opam env)
-          npm run bundle
-
-      - name: Upload bundled output
-        uses: actions/upload-artifact@v4
-        with:
-          name: dist
-          path: dist
