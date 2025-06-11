@@ -1,0 +1,38 @@
+name: Build ReasonReact (Melange)
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up OCaml + Opam
+        uses: ocaml/setup-ocaml@v2
+        with:
+          ocaml-compiler: 5.1.0
+          opam-disable-sandboxing: true
+
+      - name: Install dependencies
+        run: |
+          opam install . --deps-only -y
+          opam install dune melange
+
+      - name: Build project
+        run: |
+          eval $(opam env)
+          dune build
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: js-build
+          path: ./build
+
