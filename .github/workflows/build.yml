@@ -48,7 +48,7 @@ jobs:
         run: npm isntall -g wrangler
       
       - name: Publish Worker
-        run: wrangler publish
+        run: npx wrangler publish
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
       
